@@ -41,30 +41,31 @@ class Melody:
 class Laptop:
     def __init__(self, user_name):
         self.user_name = user_name
-        self.linux = OperatingSystem('linux', 'Telegram', 'Viber', 'PyCharm',
-                                     'Atom', 'Google Chrome')
-        self.windows = OperatingSystem('Windows 10', 'Zoom', 'Skype', 'Telegram', 'Viber',
-                                       'PyCharm', 'Atom', 'Google Chrome')
+        self.os = [Linux('Ubuntu'), Windows('7')]
+
 
     def __str__(self):
-        return f'{self.__class__.__name__} installed os:' \
-               f' {self.linux.os_name}, {self.windows.os_name}\n' \
-               f'Manual installed programs on os linux :' \
-               f' {len(self.linux.programs)} -> {", ".join(self.linux.programs)}.\n' \
-               f'Manual installed programs on os windows 10 :' \
-               f' {len(self.windows.programs)} -> {", ".join(self.linux.programs)}.'
+        return f'{self.__class__.__name__} installed {len(self.os)} os: {", ".join(map(lambda x: f"{x.__class__.__name__}", self.os))} '
 
 
-class OperatingSystem:
-    def __init__(self, os_name, *programs):
-        self.os_name = os_name
-        self.programs = programs
+class Linux:  #ubuntu
+    def __init__(self,  distribution):
+        self.os_name = distribution
+
+
+class Windows: # 7
+    def __init__(self, version):
+        self.version = version
+
+
+
+
 
 
 if __name__ == '__main__':
-    classic = Melody(['♩', '♪', '♫', '♬', '♭', '♮', '♯', '♩', '♪', '♫', '♬', '♭', '♮', '♯'], 'Robert B. Weide')
-    play_music = Guitar(classic)
-    print(play_music.play_melody)
+    # classic = Melody(['♩', '♪', '♫', '♬', '♭', '♮', '♯', '♩', '♪', '♫', '♬', '♭', '♮', '♯'], 'Robert B. Weide')
+    # play_music = Guitar(classic)
+    # print(play_music.play_melody)
 
     lp = Laptop('User')
     print(lp)

@@ -1,7 +1,7 @@
 from types import MethodType
 
 
-class Animals:
+class Animal:
 
     def __init__(self, nick_name, age):
         self.nick_name = nick_name
@@ -35,14 +35,14 @@ class Animals:
     behaviour = property(fset=_register_behaviour)
 
 
-class Lion(Animals):
+class Lion(Animal):
 
     @property
     def eat_meet(self):
         return f'{self.__class__.__name__} {self.nick_name} eat meet.'
 
 
-class Wolf(Animals):
+class Wolf(Animal):
 
     @property
     def hunt(self):
@@ -64,7 +64,7 @@ class Pantera(Bear):
         return f'{self.__class__.__name__} {self.nick_name} running fast...'
 
 
-class Crocodile(Animals):
+class Crocodile(Animal):
 
     @property
     def able_to_swimming(self):
